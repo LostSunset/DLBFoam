@@ -56,6 +56,10 @@ SourceFiles
 #define lapack_int long long int
 #else
 #include "lapacke.h"
+#if defined(LAPACK_dgetrs) && defined(LAPACK_dgetrf)
+#define dgetrs_(...) LAPACK_dgetrs (__VA_ARGS__)
+#define dgetrf_(...) LAPACK_dgetrf (__VA_ARGS__)
+#endif
 #define lapack_int int
 #endif
 
